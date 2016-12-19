@@ -94,8 +94,9 @@ trait InsertOnDuplicateKey
     public static function getTableName()
     {
         $class = get_called_class();
+        $prefix = env('DB_PREFIX', '');
 
-        return (new $class())->getTable();
+        return $prefix.(new $class())->getTable();
     }
 
     /**
